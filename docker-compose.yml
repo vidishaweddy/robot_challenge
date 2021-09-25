@@ -1,0 +1,14 @@
+version: '2.4'
+
+services:
+  app: &app
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        RUBY_VERSION: '3.0.0'
+    image: example-dev:1.0.0
+    stdin_open: true
+    tty: true
+    tmpfs:
+      - /tmp

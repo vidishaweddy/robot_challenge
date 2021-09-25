@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'challenge_constant'
+require './lib/challenge_constant'
 
 module RobotChallenge
   # Validation list for inputs

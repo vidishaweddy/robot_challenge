@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'methods/robot_movement'
-require 'methods/robot_validation'
+require './lib/methods/robot_movement'
+require './lib/methods/robot_validation'
 ##
 # Robot App Main Module
 module RobotChallenge
@@ -15,7 +15,7 @@ module RobotChallenge
     index = 0
     skip_input = true
     until (text = $stdin.gets) == "REPORT\n"
-      skip_input = false if skip_input && text.include?('PLACE ') && check_input(text, index)
+      skip_input = false if skip_input && text.to_s.include?('PLACE ') && check_input(text.to_s, index)
       inputs << text.chomp unless skip_input
       index += 1
     end

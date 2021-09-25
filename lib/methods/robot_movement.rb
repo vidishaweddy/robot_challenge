@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'objects/robot'
-require 'challenge_constant'
-require 'methods/robot_validation'
+require './lib/objects/robot'
+require './lib/challenge_constant'
+require './lib/methods/robot_validation'
 
 module RobotChallenge
   # Run commands to determine robot movement
