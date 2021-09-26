@@ -5,6 +5,7 @@ RSpec.describe 'integration' do
   describe RobotChallenge do
     it 'outputs the final robot position' do
       result = <<~TEXT
+        Welcome to Robot Challenge App. Please read the readme to learn how to use the app
         Enter your commands:
         Output: 0,1,WEST
       TEXT
@@ -17,6 +18,7 @@ RSpec.describe 'integration' do
 
     it 'outputs the error if placement is invalid' do
       result = <<~TEXT
+        Welcome to Robot Challenge App. Please read the readme to learn how to use the app
         Enter your commands:
         Error: You need to put a valid PLACE command
       TEXT
@@ -29,6 +31,7 @@ RSpec.describe 'integration' do
 
     it 'outputs the warning if input action is illegal' do
       result = <<~TEXT
+        Welcome to Robot Challenge App. Please read the readme to learn how to use the app
         Enter your commands:
         Warning: Position on line 1 must be a valid number
         Warning: Action on line 3 causes robot to be placed outside the tabletop, \

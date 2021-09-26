@@ -10,6 +10,7 @@ module RobotChallenge
   #
   # A string informing the error will be added if robot is out of bound or move is invalid
   def self.call
+    puts 'Welcome to Robot Challenge App. Please read the readme to learn how to use the app'
     puts 'Enter your commands:'
     inputs = []
     index = 0
