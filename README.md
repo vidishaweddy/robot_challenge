@@ -10,9 +10,9 @@ Once the dependencies have been installed you'll have a few commands available:
 
 ## Using Docker
 System requires docker to be installed in order to build and run commands through docker. The step to run the app
-1. Run docker-compose -up
-2. docker exec -ti <app_name> /bin/sh
-3. Run bundle exec rake to start the app
+1. Run `docker-compose -up`
+2. Run `docker exec -ti <app_name> /bin/sh` on new terminal after docker container is running
+3. Run `bundle exec rake` to start the app
 
 ## Robot Challenge App
 Robot challenge app is an application that simulate robot's movement on 5x5 tabletop.
