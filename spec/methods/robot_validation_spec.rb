@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
-require 'methods/robot_validation'
+require './lib/methods/robot_validation'
 
 RSpec.describe 'robot_validation' do
   context 'placement_valid?' do

@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
-require 'robot_challenge'
+require './lib/robot_challenge'
 
 RSpec.describe 'integration' do
   describe RobotChallenge do

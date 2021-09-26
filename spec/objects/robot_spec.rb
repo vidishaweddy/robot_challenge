@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
-require 'objects/robot'
+require './lib/objects/robot'
 
 RSpec.describe 'robot' do
   context 'move' do

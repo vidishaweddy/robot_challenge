@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
-require 'methods/robot_movement'
+require './lib/methods/robot_movement'
 
 RSpec.describe 'robot_movement' do
   context 'execute' do
