@@ -67,4 +67,11 @@ RSpec.describe 'robot' do
       expect(robot2.direction).to eq('EAST')
     end
   end
+
+  context 'current_position' do
+    it 'returns a string of robot\'s current position on tabletop' do
+      robot = RobotChallenge::Robot.new('0', '0', 'NORTH')
+      expect(robot.current_position).to eq('0,0,NORTH')
+    end
+  end
 end

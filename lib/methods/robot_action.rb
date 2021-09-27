@@ -6,32 +6,34 @@ require './lib/methods/robot_validation'
 
 module RobotChallenge
   # Run commands to determine robot movement
-  module RobotMovementMethods
+  module RobotActionMethods
     ##
-    # Execute movement based on input
+    # Execute action based on input
     # @param movements (String[])
     # @param index (Integer)
-    # @return String
-    def self.execute(movements, index)
+    # @param robot (Robot)
+    # @return Robot
+    def self.execute(movements, index, robot = nil)
       index -= movements.length
+      @robot = robot
       movements.each.with_index do |movement, i|
         if movement.include?('PLACE ')
           value = movement.gsub('PLACE ', '').split(',')
-          @robot = if RobotValidationMethods.placement_valid?(value, index + i)
-                     Robot.new(*value)
-                   end
-
+          @robot = RobotValidationMethods.placement_valid?(value, index + i) ? Robot.new(*value) : nil
         elsif @robot
           execute_movement(movement, index + i)
         end
       end
 
-      output = @robot ? "#{@robot.position_x},#{@robot.position_y},#{@robot.direction}" : 'Robot is not on the tabletop'
-      "Output: #{output}"
+      @robot
     end
 
     private
 
+    ##
+    # Execute movement (MOVE, LEFT or RIGHT) based on input
+    # @param movement (String)
+    # @param index (Integer)
     def self.execute_movement(movement, index)
       current_robot = @robot.dup
       if movement == 'MOVE'

@@ -53,5 +53,12 @@ module RobotChallenge
       end
       @direction = DIRECTION[current_direction]
     end
+
+    ##
+    # Return current position of the robot
+    # @return String
+    def current_position
+      [@position_x, @position_y, @direction].join(',')
+    end
   end
 end

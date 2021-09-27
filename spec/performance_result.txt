@@ -1,8 +1,8 @@
 example_id                                          | status | run_time        |
 --------------------------------------------------- | ------ | --------------- |
-./spec/methods/robot_movement_spec.rb[1:1:1]        | passed | 0.00038 seconds |
-./spec/methods/robot_movement_spec.rb[1:1:2]        | passed | 0.00059 seconds |
-./spec/methods/robot_movement_spec.rb[1:1:3]        | passed | 0.00005 seconds |
+./spec/methods/robot_action_spec.rb[1:1:1]          | passed | 0.00037 seconds |
+./spec/methods/robot_action_spec.rb[1:1:2]          | passed | 0.00059 seconds |
+./spec/methods/robot_action_spec.rb[1:1:3]          | passed | 0.00016 seconds |
 ./spec/methods/robot_validation_spec.rb[1:1:1]      | passed | 0.00003 seconds |
 ./spec/methods/robot_validation_spec.rb[1:1:2]      | passed | 0.00004 seconds |
 ./spec/methods/robot_validation_spec.rb[1:1:3]      | passed | 0.00004 seconds |
@@ -11,8 +11,9 @@ example_id                                          | status | run_time        |
 ./spec/objects/robot_spec.rb[1:1:1]                 | passed | 0.00004 seconds |
 ./spec/objects/robot_spec.rb[1:1:2]                 | passed | 0.00003 seconds |
 ./spec/objects/robot_spec.rb[1:2:1]                 | passed | 0.00003 seconds |
-./spec/robot_challenge_integration_spec.rb[1:1:1]   | passed | 0.00332 seconds |
-./spec/robot_challenge_integration_spec.rb[1:1:2]   | passed | 0.00012 seconds |
-./spec/robot_challenge_integration_spec.rb[1:1:3]   | passed | 0.00102 seconds |
-./spec/robot_challenge_integration_spec.rb[1:1:4:1] | passed | 0.01387 seconds |
-./spec/robot_challenge_integration_spec.rb[1:1:4:2] | passed | 0.01344 seconds |
+./spec/objects/robot_spec.rb[1:3:1]                 | passed | 0.00003 seconds |
+./spec/robot_challenge_integration_spec.rb[1:1:1]   | passed | 0.00337 seconds |
+./spec/robot_challenge_integration_spec.rb[1:1:2]   | passed | 0.00034 seconds |
+./spec/robot_challenge_integration_spec.rb[1:1:3]   | passed | 0.0012 seconds  |
+./spec/robot_challenge_integration_spec.rb[1:1:4:1] | passed | 0.01432 seconds |
+./spec/robot_challenge_integration_spec.rb[1:1:4:2] | passed | 0.01526 seconds |
