@@ -27,4 +27,6 @@ Other commands will also be ignored if PLACE command is invalid or PLACE command
 - `RIGHT`:  A command to turn the robot to the right of its current direction
 - `REPORT`: A command to close the list of actions prior to this command and return the current location and direction of the robot
 
+In order to stop the app from actively waiting for new input, just press ENTER twice.
+
 NOTE: All commands must be in uppercase. Wrong or invalid commands will be ignored
