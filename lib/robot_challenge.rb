@@ -15,12 +15,15 @@ module RobotChallenge
     inputs = []
     index = 0
     skip_input = true
-    until (text = $stdin.gets) == "REPORT\n"
+    until (text = $stdin.gets) == "\n"
       skip_input = false if skip_input && text.to_s.include?('PLACE ') && check_input(text.to_s, index)
-      inputs << text.chomp unless skip_input
+      if text.chomp.to_s == 'REPORT'
+        puts (inputs.any? ? RobotMovementMethods.execute(inputs, index) : 'Error: You need to put a valid PLACE command')
+      elsif !skip_input
+        inputs << text.chomp
+      end
       index += 1
     end
-    puts (inputs.any? ? RobotMovementMethods.execute(inputs, index) : 'Error: You need to put a valid PLACE command')
   end
 
   private

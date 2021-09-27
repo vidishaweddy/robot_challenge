@@ -12,7 +12,7 @@ RSpec.describe 'integration' do
         Output: 0,1,WEST
       TEXT
       input = File.open('spec/fixtures/valid_sample.txt').map(&:chomp)
-      allow($stdin).to receive(:gets).and_return(*input, "REPORT\n")
+      allow($stdin).to receive(:gets).and_return(*input, "\n")
       expect do
         RobotChallenge.call
       end.to output(result).to_stdout
@@ -25,7 +25,7 @@ RSpec.describe 'integration' do
         Error: You need to put a valid PLACE command
       TEXT
       input = File.open('spec/fixtures/invalid_placement_sample.txt').map(&:chomp)
-      allow($stdin).to receive(:gets).and_return(*input, "REPORT\n")
+      allow($stdin).to receive(:gets).and_return(*input, "\n")
       expect do
         RobotChallenge.call
       end.to output(result).to_stdout
@@ -45,7 +45,7 @@ RSpec.describe 'integration' do
         Output: 1,0,EAST
       TEXT
       input = File.open('spec/fixtures/valid_with_illegal_movement.txt').map(&:chomp)
-      allow($stdin).to receive(:gets).and_return(*input, "REPORT\n")
+      allow($stdin).to receive(:gets).and_return(*input, "\n")
       expect do
         RobotChallenge.call
       end.to output(result).to_stdout
@@ -54,12 +54,12 @@ RSpec.describe 'integration' do
     context 'performance testing' do
       it 'performs under certain time constraint with final invalid placement' do
         input = File.open('spec/fixtures/performance_valid_sample_1.txt').map(&:chomp)
-        allow($stdin).to receive(:gets).and_return(*input, "REPORT\n")
+        allow($stdin).to receive(:gets).and_return(*input, "\n")
         expect do
           RobotChallenge.call
         end.to perform_under(1).ms
 
-        allow($stdin).to receive(:gets).and_return(*input, "REPORT\n")
+        allow($stdin).to receive(:gets).and_return(*input, "\n")
         expect do
           RobotChallenge.call
         end.to output(/Output: Robot is not on the tabletop/).to_stdout
@@ -67,12 +67,12 @@ RSpec.describe 'integration' do
 
       it 'performs under certain time constraint with final valid placement' do
         input = File.open('spec/fixtures/performance_valid_sample_2.txt').map(&:chomp)
-        allow($stdin).to receive(:gets).and_return(*input, "REPORT\n")
+        allow($stdin).to receive(:gets).and_return(*input, "\n")
         expect do
           RobotChallenge.call
         end.to perform_under(1).ms
 
-        allow($stdin).to receive(:gets).and_return(*input, "REPORT\n")
+        allow($stdin).to receive(:gets).and_return(*input, "\n")
         expect do
           RobotChallenge.call
         end.to output(/Output: 1,0,EAST/).to_stdout
