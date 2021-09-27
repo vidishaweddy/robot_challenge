@@ -1,6 +1,10 @@
-# A sample Gemfile
-source "https://rubygems.org"
+# frozen_string_literal: true
 
-gem "rake"
-gem "rspec"
-gem "rspec-benchmark"
+source 'https://rubygems.org'
+
+gem 'rake'
+group :test do
+  gem 'rspec'
+  gem 'rspec-benchmark'
+  gem 'simplecov'
+end
