@@ -7,3 +7,5 @@ Metrics/BlockLength:
     - 'spec/**/*'
 Metrics/CyclomaticComplexity:
   Max: 10
+Metrics/AbcSize:
+  Max: 20

@@ -4,6 +4,11 @@ require 'spec_helper'
 require './lib/robot_challenge'
 
 RSpec.describe 'integration' do
+  before do
+    @orig_stderr = $stderr
+    $stderr = StringIO.new
+  end
+
   describe RobotChallenge do
     it 'outputs the final robot position' do
       result = <<~TEXT
@@ -22,7 +27,7 @@ RSpec.describe 'integration' do
       result = <<~TEXT
         Welcome to Robot Challenge App. Please read the readme to learn how to use the app
         Enter your commands:
-        Error: You need to put a valid PLACE command
+        Output: Robot is not on the tabletop
       TEXT
       input = File.open('spec/fixtures/invalid_placement_sample.txt').map(&:chomp)
       allow($stdin).to receive(:gets).and_return(*input, "exit\n")
@@ -35,20 +40,26 @@ RSpec.describe 'integration' do
       result = <<~TEXT
         Welcome to Robot Challenge App. Please read the readme to learn how to use the app
         Enter your commands:
-        Warning: Position on line 1 must be a valid number
-        Warning: Action on line 3 causes robot to be placed outside the tabletop, \
-        all other commands will be ignored until the next PLACE command
-        Warning: Direction on line 5 is invalid
-        Warning: Value on line 7 is invalid
-        Warning: Move action on line 10 is skipped to prevent robot from falling
-        Warning: Action on line 13 is invalid. Action will be skipped
         Output: 1,0,EAST
       TEXT
+
+      warning = <<~TEXT
+        Warning: Input on line 1 is invalid. Details: ["item position_y must be an integer"]
+        Warning: Input on line 3 is invalid. Details: ["item cannot be placed outside the tabletop. Action will be ignored"]
+        Warning: Input on line 5 is invalid. Details: ["item direction is not a valid direction"]
+        Warning: Input on line 7 is invalid. Details: ["item position_y must be an integer, direction must be filled"]
+        Warning: Input on line 10 is invalid. Details: ["item cannot be placed outside the tabletop. Action will be ignored"]
+        Warning: Unknown action on line 13
+      TEXT
+
       input = File.open('spec/fixtures/valid_with_illegal_movement.txt').map(&:chomp)
       allow($stdin).to receive(:gets).and_return(*input, "exit\n")
       expect do
         RobotChallenge.call
       end.to output(result).to_stdout
+
+      $stderr.rewind
+      expect($stderr.string).to eq(warning)
     end
 
     context 'performance testing' do
@@ -78,5 +89,9 @@ RSpec.describe 'integration' do
         end.to output(/Output: 1,0,EAST/).to_stdout
       end
     end
+  end
+
+  after do
+    $stderr = @orig_stderr
   end
 end

@@ -1,32 +1,49 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
-require './lib/methods/robot_action'
+require './spec/spec_helper'
+require './lib/methods/tabletop_action'
+require './lib/objects/tabletop'
+require './lib/objects/robot'
 
-RSpec.describe 'robot_action' do
+RSpec.describe 'tabletop_action' do
+  before do
+    @orig_stderr = $stderr
+    $stderr = StringIO.new
+    @tabletop = Tabletop.new(Robot)
+  end
+
   context 'execute' do
-    it 'returns the current robot position' do
-      movements = ['PLACE 0,0,NORTH', 'MOVE', 'LEFT']
-      robot = RobotChallenge::RobotActionMethods.execute(movements, movements.length)
-      expect(robot.current_position).to eq('0,1,WEST')
+    it 'returns the current tabletop position' do
+      movements = [%w[place 0,0,north], ['move'], ['left']]
+      movements.each.with_index do |movement, index|
+        TabletopActionMethods.execute(movement, @tabletop, index + 1)
+      end
+      expect(@tabletop.item.current_position).to eq('0,1,WEST')
     end
 
-    it 'returns the info message if robot action can cause robot to fall ' do
-      movements = ['PLACE 0,0,SOUTH', 'MOVE', 'LEFT']
-      expect do
-        RobotChallenge::RobotActionMethods.execute(movements, movements.length)
-      end.to output("Warning: Move action on line 2 is skipped to prevent robot from falling\n").to_stdout
-      robot = RobotChallenge::RobotActionMethods.execute(movements, movements.length)
-      expect(robot.current_position).to eq('0,0,EAST')
+    it 'returns the info message if tabletop action can cause tabletop to fall ' do
+      movements = [%w[place 0,0,south], ['move'], ['left']]
+      movements.each.with_index do |movement, index|
+        TabletopActionMethods.execute(movement, @tabletop, index + 1)
+      end
+      expect(@tabletop.item.current_position).to eq('0,0,EAST')
+      $stderr.rewind
+      expect($stderr.string).to eq('Warning: Input on line 2 is invalid. Details: '\
+        "[\"item cannot be placed outside the tabletop. Action will be ignored\"]\n")
     end
 
-    it 'returns the info message if robot action is unknown ' do
-      movements = ['PLACE 0,0,EAST', 'MOVE', 'TURN']
-      expect do
-        RobotChallenge::RobotActionMethods.execute(movements, movements.length)
-      end.to output("Warning: Action on line 3 is invalid. Action will be skipped\n").to_stdout
-      robot = RobotChallenge::RobotActionMethods.execute(movements, movements.length)
-      expect(robot.current_position).to eq('1,0,EAST')
+    it 'returns the info message if tabletop action is unknown ' do
+      movements = [%w[place 0,0,east], ['move'], ['turn']]
+      movements.each.with_index do |movement, index|
+        TabletopActionMethods.execute(movement, @tabletop, index + 1)
+      end
+      expect(@tabletop.item.current_position).to eq('1,0,EAST')
+      $stderr.rewind
+      expect($stderr.string).to eq("Warning: Unknown action on line 3\n")
     end
+  end
+
+  after do
+    $stderr = @orig_stderr
   end
 end

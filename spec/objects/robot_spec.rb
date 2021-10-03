@@ -1,55 +1,47 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
+require './spec/spec_helper'
 require './lib/objects/robot'
 
 RSpec.describe 'robot' do
-  context 'move' do
-    it 'moves based on robot current direction' do
-      robot = RobotChallenge::Robot.new('0', '0', 'NORTH')
-      robot.move
+  context 'place' do
+    it 'places the robot' do
+      robot = Robot.new
+      robot.place('0, 0, north')
       expect(robot.position_x).to eq(0)
-      expect(robot.position_y).to eq(1)
-
-      robot = RobotChallenge::Robot.new('0', '0', 'EAST')
-      robot.move
-      expect(robot.position_x).to eq(1)
       expect(robot.position_y).to eq(0)
-
-      robot = RobotChallenge::Robot.new('1', '1', 'SOUTH')
-      robot.move
-      expect(robot.position_x).to eq(1)
-      expect(robot.position_y).to eq(0)
-
-      robot = RobotChallenge::Robot.new('1', '1', 'WEST')
-      robot.move
-      expect(robot.position_x).to eq(0)
-      expect(robot.position_y).to eq(1)
-
-      # Direction is incorrect, so no movement
-      robot = RobotChallenge::Robot.new('1', '1', 'CENTER')
-      robot.move
-      expect(robot.position_x).to eq(1)
-      expect(robot.position_y).to eq(1)
+      expect(robot.direction).to eq('north')
     end
 
-    it 'does not move if robot is at the edge of tabletop' do
-      robot = RobotChallenge::Robot.new('0', '5', 'NORTH')
+    it 'returns an error if robot is placed on unknown direction' do
+      robot = Robot.new
+      robot.place('0, 0, center')
+      expect(robot.errors).to eq(['direction is not a valid direction'])
+    end
+  end
+
+  context 'move' do
+    it 'moves based on robot current direction' do
+      robot = Robot.new
+      robot.place('0, 0, north')
       robot.move
       expect(robot.position_x).to eq(0)
-      expect(robot.position_y).to eq(5)
+      expect(robot.position_y).to eq(1)
 
-      robot = RobotChallenge::Robot.new('5', '0', 'EAST')
-      robot.move
-      expect(robot.position_x).to eq(5)
-      expect(robot.position_y).to eq(0)
-
-      robot = RobotChallenge::Robot.new('1', '0', 'SOUTH')
+      robot = Robot.new
+      robot.place('0, 0, east')
       robot.move
       expect(robot.position_x).to eq(1)
       expect(robot.position_y).to eq(0)
 
-      robot = RobotChallenge::Robot.new('0', '1', 'WEST')
+      robot = Robot.new
+      robot.place('1, 1, south')
+      robot.move
+      expect(robot.position_x).to eq(1)
+      expect(robot.position_y).to eq(0)
+
+      robot = Robot.new
+      robot.place('1, 1, west')
       robot.move
       expect(robot.position_x).to eq(0)
       expect(robot.position_y).to eq(1)
@@ -58,19 +50,22 @@ RSpec.describe 'robot' do
 
   context 'turn' do
     it 'turns based on input' do
-      robot = RobotChallenge::Robot.new('0', '0', 'NORTH')
-      robot.turn('LEFT')
-      expect(robot.direction).to eq('WEST')
+      robot = Robot.new
+      robot.place('0,0,north')
+      robot.left
+      expect(robot.direction).to eq('west')
 
-      robot2 = RobotChallenge::Robot.new('0', '0', 'NORTH')
-      robot2.turn('RIGHT')
-      expect(robot2.direction).to eq('EAST')
+      robot2 = Robot.new
+      robot2.place('0,0,north')
+      robot2.right
+      expect(robot2.direction).to eq('east')
     end
   end
 
   context 'current_position' do
     it 'returns a string of robot\'s current position on tabletop' do
-      robot = RobotChallenge::Robot.new('0', '0', 'NORTH')
+      robot = Robot.new
+      robot.place('0,0,north')
       expect(robot.current_position).to eq('0,0,NORTH')
     end
   end

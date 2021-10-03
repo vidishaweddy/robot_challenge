@@ -1,19 +1,20 @@
 example_id                                          | status | run_time        |
 --------------------------------------------------- | ------ | --------------- |
-./spec/methods/robot_action_spec.rb[1:1:1]          | passed | 0.0004 seconds  |
-./spec/methods/robot_action_spec.rb[1:1:2]          | passed | 0.00066 seconds |
-./spec/methods/robot_action_spec.rb[1:1:3]          | passed | 0.00016 seconds |
-./spec/methods/robot_validation_spec.rb[1:1:1]      | passed | 0.00003 seconds |
-./spec/methods/robot_validation_spec.rb[1:1:2]      | passed | 0.00004 seconds |
-./spec/methods/robot_validation_spec.rb[1:1:3]      | passed | 0.00004 seconds |
-./spec/methods/robot_validation_spec.rb[1:1:4]      | passed | 0.00004 seconds |
-./spec/methods/robot_validation_spec.rb[1:1:5]      | passed | 0.00004 seconds |
-./spec/objects/robot_spec.rb[1:1:1]                 | passed | 0.00005 seconds |
-./spec/objects/robot_spec.rb[1:1:2]                 | passed | 0.00004 seconds |
-./spec/objects/robot_spec.rb[1:2:1]                 | passed | 0.00003 seconds |
-./spec/objects/robot_spec.rb[1:3:1]                 | passed | 0.00003 seconds |
-./spec/robot_challenge_integration_spec.rb[1:1:1]   | passed | 0.00332 seconds |
-./spec/robot_challenge_integration_spec.rb[1:1:2]   | passed | 0.00042 seconds |
-./spec/robot_challenge_integration_spec.rb[1:1:3]   | passed | 0.00033 seconds |
-./spec/robot_challenge_integration_spec.rb[1:1:4:1] | passed | 0.01524 seconds |
-./spec/robot_challenge_integration_spec.rb[1:1:4:2] | passed | 0.01746 seconds |
+./spec/methods/robot_action_spec.rb[1:1:1]          | passed | 0.00199 seconds |
+./spec/methods/robot_action_spec.rb[1:1:2]          | passed | 0.00055 seconds |
+./spec/methods/robot_action_spec.rb[1:1:3]          | passed | 0.00044 seconds |
+./spec/objects/robot_spec.rb[1:1:1]                 | passed | 0.00025 seconds |
+./spec/objects/robot_spec.rb[1:1:2]                 | passed | 0.00017 seconds |
+./spec/objects/robot_spec.rb[1:2:1]                 | passed | 0.00034 seconds |
+./spec/objects/robot_spec.rb[1:3:1]                 | passed | 0.0002 seconds  |
+./spec/objects/robot_spec.rb[1:4:1]                 | passed | 0.00019 seconds |
+./spec/objects/table_top_action_spec.rb[1:1]        | passed | 0.0011 seconds  |
+./spec/objects/tabletop_spec.rb[1:1:1]              | passed | 0.00051 seconds |
+./spec/objects/tabletop_spec.rb[1:1:2]              | passed | 0.00048 seconds |
+./spec/objects/tabletop_spec.rb[1:1:3]              | passed | 0.00062 seconds |
+./spec/objects/tabletop_spec.rb[1:1:4]              | passed | 0.0005 seconds  |
+./spec/robot_challenge_integration_spec.rb[1:1:1]   | passed | 0.00615 seconds |
+./spec/robot_challenge_integration_spec.rb[1:1:2]   | passed | 0.00074 seconds |
+./spec/robot_challenge_integration_spec.rb[1:1:3]   | passed | 0.00294 seconds |
+./spec/robot_challenge_integration_spec.rb[1:1:4:1] | passed | 0.02766 seconds |
+./spec/robot_challenge_integration_spec.rb[1:1:4:2] | passed | 0.05518 seconds |
