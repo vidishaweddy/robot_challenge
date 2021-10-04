@@ -36,8 +36,10 @@ class RobotChallenge
 
   ##
   # Report the current location of the robot
-  # @return String
+  # @param tabletop (Tabletop)
   def self.report(tabletop)
     puts "Output: #{tabletop.item.current_position}"
+    # clear the buffer
+    $stdout.flush
   end
 end
