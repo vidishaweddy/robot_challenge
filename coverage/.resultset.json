@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/vidishaweddy/RubymineProjects/robot_challenge/lib/methods/tabletop_action.rb": {
+      "/Users/Vidi/robot_challenge/lib/methods/tabletop_action.rb": {
         "lines": [
           null,
           null,
@@ -39,7 +39,7 @@
           null
         ]
       },
-      "/Users/vidishaweddy/RubymineProjects/robot_challenge/lib/objects/tabletop.rb": {
+      "/Users/Vidi/robot_challenge/lib/objects/tabletop.rb": {
         "lines": [
           null,
           null,
@@ -103,7 +103,7 @@
           null
         ]
       },
-      "/Users/vidishaweddy/RubymineProjects/robot_challenge/lib/objects/tabletop_item.rb": {
+      "/Users/Vidi/robot_challenge/lib/objects/tabletop_item.rb": {
         "lines": [
           null,
           null,
@@ -189,7 +189,7 @@
           null
         ]
       },
-      "/Users/vidishaweddy/RubymineProjects/robot_challenge/lib/objects/robot.rb": {
+      "/Users/Vidi/robot_challenge/lib/objects/robot.rb": {
         "lines": [
           null,
           null,
@@ -225,7 +225,7 @@
           null
         ]
       },
-      "/Users/vidishaweddy/RubymineProjects/robot_challenge/spec/objects/robot_spec.rb": {
+      "/Users/Vidi/robot_challenge/spec/objects/robot_spec.rb": {
         "lines": [
           null,
           null,
@@ -315,7 +315,7 @@
           null
         ]
       },
-      "/Users/vidishaweddy/RubymineProjects/robot_challenge/spec/objects/table_top_action_spec.rb": {
+      "/Users/Vidi/robot_challenge/spec/objects/table_top_action_spec.rb": {
         "lines": [
           null,
           null,
@@ -329,7 +329,7 @@
           null
         ]
       },
-      "/Users/vidishaweddy/RubymineProjects/robot_challenge/spec/objects/tabletop_spec.rb": {
+      "/Users/Vidi/robot_challenge/spec/objects/tabletop_spec.rb": {
         "lines": [
           null,
           null,
@@ -388,7 +388,7 @@
           null
         ]
       },
-      "/Users/vidishaweddy/RubymineProjects/robot_challenge/spec/robot_challenge_integration_spec.rb": {
+      "/Users/Vidi/robot_challenge/spec/robot_challenge_integration_spec.rb": {
         "lines": [
           null,
           null,
@@ -489,7 +489,7 @@
           null
         ]
       },
-      "/Users/vidishaweddy/RubymineProjects/robot_challenge/lib/robot_challenge.rb": {
+      "/Users/Vidi/robot_challenge/lib/robot_challenge.rb": {
         "lines": [
           null,
           null,
@@ -537,6 +537,6 @@
         ]
       }
     },
-    "timestamp": 1633322317
+    "timestamp": 1633342606
   }
 }

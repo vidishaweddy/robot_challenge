@@ -39,7 +39,7 @@ RSpec.describe 'tabletop_action' do
       end
       expect(@tabletop.item.current_position).to eq('1,0,EAST')
       $stderr.rewind
-      expect($stderr.string).to eq("Warning: Unknown action on line 3\n")
+      expect($stderr.string).to eq("Warning: Unknown action 'turn' for Robot on line 3\n")
     end
   end
 

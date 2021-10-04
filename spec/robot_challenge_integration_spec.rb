@@ -49,7 +49,7 @@ RSpec.describe 'integration' do
         Warning: Input on line 5 is invalid. Details: ["item direction is not a valid direction"]
         Warning: Input on line 7 is invalid. Details: ["item position_y must be an integer, direction must be filled"]
         Warning: Input on line 10 is invalid. Details: ["item cannot be placed outside the tabletop. Action will be ignored"]
-        Warning: Unknown action on line 13
+        Warning: Unknown action 'center' for Robot on line 13
       TEXT
 
       input = File.open('spec/fixtures/valid_with_illegal_movement.txt').map(&:chomp)
