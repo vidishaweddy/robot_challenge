@@ -86,7 +86,7 @@ RSpec.describe 'integration' do
         allow($stdin).to receive(:gets).and_return(*input, "exit\n")
         expect do
           RobotChallenge.call
-        end.to output(/Output: 1,0,EAST/).to_stdout
+        end.to output(/Output: 2,1,NORTH/).to_stdout
       end
     end
   end

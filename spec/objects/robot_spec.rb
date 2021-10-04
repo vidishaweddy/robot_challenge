@@ -60,11 +60,23 @@ RSpec.describe 'robot' do
       robot.place('0,0,north')
       robot.left
       expect(robot.direction).to eq('west')
+      robot.left
+      expect(robot.direction).to eq('south')
+      robot.left
+      expect(robot.direction).to eq('east')
+      robot.left
+      expect(robot.direction).to eq('north')
 
       robot2 = Robot.new
       robot2.place('0,0,north')
       robot2.right
       expect(robot2.direction).to eq('east')
+      robot2.right
+      expect(robot2.direction).to eq('south')
+      robot2.right
+      expect(robot2.direction).to eq('west')
+      robot2.right
+      expect(robot2.direction).to eq('north')
     end
   end
 

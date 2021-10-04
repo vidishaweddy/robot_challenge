@@ -26,7 +26,7 @@ class Robot < TabletopItem
   # A specific action of robot to turn right
   def right
     current_direction = DIRECTION.find_index(@direction)
-    current_direction = current_direction == DIRECTION.length - 1 ? 0 : current_direction
+    current_direction = current_direction == DIRECTION.length - 1 ? -1 : current_direction
     @direction = DIRECTION[current_direction + 1]
   end
 end
