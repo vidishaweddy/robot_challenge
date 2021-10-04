@@ -18,6 +18,12 @@ RSpec.describe 'robot' do
       robot.place('0, 0, center')
       expect(robot.errors).to eq(['direction is not a valid direction'])
     end
+
+    it 'returns an error if robot is placed negative position' do
+      robot = Robot.new
+      robot.place('-1, 0, north')
+      expect(robot.errors).to eq(['position_x must be greater than or equal to 0'])
+    end
   end
 
   context 'move' do
@@ -67,6 +73,14 @@ RSpec.describe 'robot' do
       robot = Robot.new
       robot.place('0,0,north')
       expect(robot.current_position).to eq('0,0,NORTH')
+
+      robot = Robot.new
+      robot.place('0,0,center')
+      expect(robot.current_position).to eq('Robot is not on the tabletop')
+
+      robot = Robot.new
+      robot.place('-1,-1,north')
+      expect(robot.current_position).to eq('Robot is not on the tabletop')
     end
   end
 end

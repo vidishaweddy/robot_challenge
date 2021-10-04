@@ -7,8 +7,8 @@ require './lib/objects/tabletop_item'
 # Validator for table
 class TabletopValidator < Dry::Validation::Contract
   params do
-    required(:min_dimension).array(:integer)
-    required(:max_dimension).array(:integer)
+    required(:min_dimension).filled(:array, min_size?: 2, max_size?: 2).each(:integer)
+    required(:max_dimension).filled(:array, min_size?: 2, max_size?: 2).each(:integer)
     optional(:item).filled(Dry::Types::Nominal.new(::TabletopItem).constructor(&:input))
   end
 

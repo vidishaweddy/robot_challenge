@@ -9,8 +9,8 @@ DIRECTION = %w[north east south west].freeze
 # Validator for table object
 class TabletopItemValidator < Dry::Validation::Contract
   params do
-    required(:position_x).value(:integer)
-    required(:position_y).value(:integer)
+    required(:position_x).value(:integer, gteq?: 0)
+    required(:position_y).value(:integer, gteq?: 0)
     required(:direction).filled(:string)
   end
 
@@ -26,6 +26,8 @@ class TabletopItem
   attr_reader :id, :position_x, :position_y, :direction, :errors
 
   def initialize
+    return unless instance_of?(TabletopItem)
+
     raise 'Error: You are trying to instantiate an abstract class!'
   end
 
@@ -36,8 +38,8 @@ class TabletopItem
     object = validation_result.to_h
     @position_x = object[:position_x]
     @position_y = object[:position_y]
-    @direction = object[:direction]
     if validation_result.success?
+      @direction = object[:direction]
       # To follow persisted object rule and to allow multiple items placement in the future
       @id = SecureRandom.uuid
     else
@@ -48,7 +50,7 @@ class TabletopItem
   ##
   # To check whether object is placed or not
   def placed?
-    @position_x != -1
+    @position_x != -1 && @position_y != -1 && !@direction.chomp.empty?
   end
 
   ##
@@ -71,6 +73,10 @@ class TabletopItem
   # Return current position of the object
   # @return String
   def current_position
-    [@position_x, @position_y, @direction.upcase].join(',')
+    if placed?
+      [@position_x, @position_y, @direction.upcase].join(',')
+    else
+      "#{self.class.name.to_s} is not on the tabletop"
+    end
   end
 end

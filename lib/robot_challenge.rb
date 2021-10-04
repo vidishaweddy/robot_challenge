@@ -30,7 +30,7 @@ class RobotChallenge
   # Sanitize input received from the view/terminal before executing it
   # @param input (String)
   def self.sanitize_input(input)
-    sanitized_input = input.scan(/^(\D+)(\s+|$)(.*)/)
+    sanitized_input = input.scan(/^(\D+)(\s+|$)(.*)$/)
     sanitized_input.flatten.map(&:strip).reject(&:empty?)
   end
 
@@ -38,6 +38,6 @@ class RobotChallenge
   # Report the current location of the robot
   # @return String
   def self.report(tabletop)
-    puts "Output: #{tabletop.item.placed? ? tabletop.item.current_position : 'Robot is not on the tabletop'}"
+    puts "Output: #{tabletop.item.current_position}"
   end
 end

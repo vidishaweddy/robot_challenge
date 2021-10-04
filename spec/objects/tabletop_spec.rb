@@ -40,5 +40,16 @@ RSpec.describe 'tabletop' do
       tabletop.update_tabletop_status(robot)
       expect(@tabletop.errors).to eq({})
     end
+
+    it 'returns error if robot location value is invalid' do
+      robot = Robot.new
+      robot.place('5,5,north')
+      expect do
+        Tabletop.new(Robot, [0, 0], [5, 5, 0])
+      end.to raise_error(
+        RuntimeError,
+        'Error: Table top dimension is invalid. Details: ["max_dimension size cannot be greater than 2"]'
+      )
+    end
   end
 end

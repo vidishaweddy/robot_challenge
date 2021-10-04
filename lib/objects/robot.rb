@@ -11,6 +11,7 @@ class Robot < TabletopItem
     @position_y = -1
     @direction = ''
     @errors = {}
+    super
   end
 
   ##
