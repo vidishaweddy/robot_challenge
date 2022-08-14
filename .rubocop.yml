@@ -1,5 +1,5 @@
 Metrics/MethodLength:
-  Max: 15
+  Max: 12
   Exclude:
     - 'spec/**/*'
 Metrics/BlockLength:
@@ -9,3 +9,5 @@ Metrics/CyclomaticComplexity:
   Max: 10
 Metrics/AbcSize:
   Max: 20
+Layout/EndOfLine:
+  Enabled: False

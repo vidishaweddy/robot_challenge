@@ -44,12 +44,12 @@ RSpec.describe 'integration' do
       TEXT
 
       warning = <<~TEXT
-        Warning: Input on line 1 is invalid. Details: ["item position_y must be an integer"]
-        Warning: Input on line 3 is invalid. Details: ["item cannot be placed outside the tabletop. Action will be ignored"]
-        Warning: Input on line 5 is invalid. Details: ["item direction is not a valid direction"]
-        Warning: Input on line 7 is invalid. Details: ["item position_y must be an integer, direction must be filled"]
-        Warning: Input on line 10 is invalid. Details: ["item cannot be placed outside the tabletop. Action will be ignored"]
-        Warning: Unknown action 'center' for Robot on line 13
+        Warning: Input on line 1 is invalid. Details: ["robot position_y must be an integer"]
+        Warning: Input on line 3 is invalid. Details: ["robot cannot be placed outside the tabletop. Action will be ignored"]
+        Warning: Input on line 5 is invalid. Details: ["robot direction is not a valid direction"]
+        Warning: Input on line 7 is invalid. Details: ["robot position_y must be an integer, direction must be filled"]
+        Warning: Input on line 10 is invalid. Details: ["robot cannot be placed outside the tabletop. Action will be ignored"]
+        Warning: Input on line 13 is invalid. Action center is unknown
       TEXT
 
       input = File.open('spec/fixtures/valid_with_illegal_movement.txt').map(&:chomp)
@@ -70,10 +70,11 @@ RSpec.describe 'integration' do
           RobotChallenge.call
         end.to perform_under(1).ms
 
+        # Based on requirement, all invalid placement will be ignored, so last invalid placement will be ignored
         allow($stdin).to receive(:gets).and_return(*input, "exit\n")
         expect do
           RobotChallenge.call
-        end.to output(/Output: Robot is not on the tabletop/).to_stdout
+        end.to output(/Output: 2,2,EAST/).to_stdout
       end
 
       it 'performs under certain time constraint with final valid placement' do

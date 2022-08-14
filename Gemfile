@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 
 gem 'dry-validation'
 gem 'rake'
+gem 'rubocop'
 
 group :test do
   gem 'rspec'
