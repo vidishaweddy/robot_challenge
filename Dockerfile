@@ -16,4 +16,4 @@ WORKDIR $APP_HOME
 ADD . $APP_HOME
 
 RUN gem update bundler
-RUN bundle install --jobs 5
+RUN bundle install --without development test --jobs 5
